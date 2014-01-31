@@ -14,6 +14,11 @@ public class Robot
 	private File scoringNotes = new File("scoring");
 	private static Scanner noteScanner = new Scanner(System.in);
 	private Formatter noteWriter;
+	private double overallScore;
+	public void generateOverallScore()
+	{
+		overallScore = topGoalScores;//ADD REAL STUFF
+	}
 	public int getTeamID() 
 	{
 		return teamID;
