@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 public class Main extends JPanel implements KeyListener, MouseListener, MouseMotionListener
 {
+	public static Robot test = new Robot(3);
 	private static String windowName = "Scouter";
     static int screenWidth = 500;
     static int screenHeight = 500;

@@ -11,10 +11,42 @@ public class Robot
 	private int bottomGoal;
 	private int bottomGoalAttempts;
 	private int bottomGoalRatio;
-	private File scoringNotes = new File("scoring");
-	private static Scanner noteScanner = new Scanner(System.in);
-	private Formatter noteWriter;
+	private File mobilityNotes = new File(teamID + "mobility.txt");
+	private File shootingNotes = new File(teamID + "shooting.txt");
+	private File blockingNotes = new File(teamID + "blocking.txt");
+	private File passingNotes = new File(teamID + "passing.txt");
+	private File wheelNotes = new File(teamID + "wheel.txt");
+	private Scanner mobilityScanner;
+	private Scanner shootingScanner;
+	private Scanner blockingScanner;
+	private Scanner passingScanner;
+	private Scanner wheelScanner;
+	private Formatter mobilityFormatter;
+	private Formatter shootingFormatter;
+	private Formatter blockingFormatter;
+	private Formatter passingFormatter;
+	private Formatter wheelFormatter;
 	private double overallScore;
+	public Robot(int teamNum) 
+	{
+		try 
+		{
+			mobilityScanner = new Scanner(mobilityNotes);
+			shootingScanner = new Scanner(shootingNotes);
+			blockingScanner = new Scanner(blockingNotes);
+			passingScanner = new Scanner(passingNotes);
+			wheelScanner = new Scanner(wheelNotes);
+			mobilityFormatter = new Formatter(mobilityNotes);
+			shootingFormatter = new Formatter(shootingNotes);
+			blockingFormatter = new Formatter(blockingNotes);
+			passingFormatter = new Formatter(passingNotes);
+			wheelFormatter = new Formatter(wheelNotes);
+		} catch(Exception e) 
+		{
+			System.out.println("File not found");
+		}
+		teamID = teamNum;
+	}
 	public void generateOverallScore()
 	{
 		overallScore = topGoalScores;//ADD REAL STUFF
@@ -83,14 +115,133 @@ public class Robot
 	{
 		this.bottomGoalRatio = bottomGoalRatio;
 	}
-	public File getScoringNotes() 
+	public File getMobilityNotes() 
 	{
-		return scoringNotes;
+		return mobilityNotes;
 	}
-	public void setScoringNotes(File scoringNotes) 
+	public void setMobilityNotes(File mobilityNotes) 
 	{
-		this.scoringNotes = scoringNotes;
+		this.mobilityNotes = mobilityNotes;
 	}
-	
+	public File getShootingNotes() 
+	{
+		return shootingNotes;
+	}
+	public void setShootingNotes(File shootingNotes) 
+	{
+		this.shootingNotes = shootingNotes;
+	}
+	public File getBlockingNotes() 
+	{
+		return blockingNotes;
+	}
+	public void setBlockingNotes(File blockingNotes) 
+	{
+		this.blockingNotes = blockingNotes;
+	}
+	public File getPassingNotes() 
+	{
+		return passingNotes;
+	}
+	public void setPassingNotes(File passingNotes) 
+	{
+		this.passingNotes = passingNotes;
+	}
+	public File getWheelNotes() 
+	{
+		return wheelNotes;
+	}
+	public void setWheelNotes(File wheelNotes)
+	{
+		this.wheelNotes = wheelNotes;
+	}
+	public Scanner getMobilityScanner()
+	{
+		return mobilityScanner;
+	}
+	public void setMobilityScanner(Scanner mobilityScanner) 
+	{
+		this.mobilityScanner = mobilityScanner;
+	}
+	public Scanner getShootingScanner() 
+	{
+		return shootingScanner;
+	}
+	public void setShootingScanner(Scanner shootingScanner) 
+	{
+		this.shootingScanner = shootingScanner;
+	}
+	public Scanner getBlockingScanner() 
+	{
+		return blockingScanner;
+	}
+	public void setBlockingScanner(Scanner blockingScanner) 
+	{
+		this.blockingScanner = blockingScanner;
+	}
+	public Scanner getPassingScanner() 
+	{
+		return passingScanner;
+	}
+	public void setPassingScanner(Scanner passingScanner) 
+	{
+		this.passingScanner = passingScanner;
+	}
+	public Scanner getWheelScanner() 
+	{
+		return wheelScanner;
+	}
+	public void setWheelScanner(Scanner wheelScanner) 
+	{
+		this.wheelScanner = wheelScanner;
+	}
+	public Formatter getMobilityFormatter() 
+	{
+		return mobilityFormatter;
+	}
+	public void setMobilityFormatter(Formatter mobilityFormatter) 
+	{
+		this.mobilityFormatter = mobilityFormatter;
+	}
+	public Formatter getShootingFormatter() 
+	{
+		return shootingFormatter;
+	}
+	public void setShootingFormatter(Formatter shootingFormatter) 
+	{
+		this.shootingFormatter = shootingFormatter;
+	}
+	public Formatter getBlockingFormatter() 
+	{
+		return blockingFormatter;
+	}
+	public void setBlockingFormatter(Formatter blockingFormatter) 
+	{
+		this.blockingFormatter = blockingFormatter;
+	}
+	public Formatter getPassingFormatter() 
+	{
+		return passingFormatter;
+	}
+	public void setPassingFormatter(Formatter passingFormatter) 
+	{
+		this.passingFormatter = passingFormatter;
+	}
+	public Formatter getWheelFormatter() 
+	{
+		return wheelFormatter;
+	}
+	public void setWheelFormatter(Formatter wheelFormatter) 
+	{
+		this.wheelFormatter = wheelFormatter;
+	}
+	public double getOverallScore() 
+	{
+		return overallScore;
+	}
+	public void setOverallScore(double overallScore) 
+	{
+		this.overallScore = overallScore;
+	}
 	
 }
