@@ -4,16 +4,17 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Main extends JPanel implements KeyListener, MouseListener, MouseMotionListener
 {
-	public static Robot test = new Robot(3);
 	private static String windowName = "Scouter";
     static int screenWidth = 500;
     static int screenHeight = 500;
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
         JFrame frame = new JFrame();
         frame.setSize(screenWidth, screenHeight);
@@ -27,6 +28,11 @@ public class Main extends JPanel implements KeyListener, MouseListener, MouseMot
         frame.addKeyListener(drawer);
         frame.addMouseListener(drawer);
         frame.addMouseMotionListener(drawer);
+        Robot robot = new Robot(1);
+        for(Object s : robot.scanMobility())
+        {
+        	System.out.println(s);
+        }
 	}
 	
 	//Mouse events

@@ -1,4 +1,11 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
 public class Robot 
@@ -11,41 +18,53 @@ public class Robot
 	private int bottomGoal;
 	private int bottomGoalAttempts;
 	private int bottomGoalRatio;
-	private File mobilityNotes = new File(teamID + "mobility.txt");
+	private FileOutputStream mobilityNotes;
 	private File shootingNotes = new File(teamID + "shooting.txt");
 	private File blockingNotes = new File(teamID + "blocking.txt");
 	private File passingNotes = new File(teamID + "passing.txt");
 	private File wheelNotes = new File(teamID + "wheel.txt");
-	private Scanner mobilityScanner;
+	private BufferedReader mobilityReader;
 	private Scanner shootingScanner;
 	private Scanner blockingScanner;
 	private Scanner passingScanner;
 	private Scanner wheelScanner;
-	private Formatter mobilityFormatter;
-	private Formatter shootingFormatter;
-	private Formatter blockingFormatter;
-	private Formatter passingFormatter;
-	private Formatter wheelFormatter;
+	private PrintWriter mobilityWriter;
+	private PrintWriter shootingWriter;
+	private PrintWriter blockingWriter;
+	private PrintWriter passingWriter;
+	private PrintWriter wheelWriter;
 	private double overallScore;
 	public Robot(int teamNum) 
 	{
 		try 
 		{
-			mobilityScanner = new Scanner(mobilityNotes);
+			mobilityReader = new BufferedReader(new FileReader(teamID + "mobility.txt"));
 			shootingScanner = new Scanner(shootingNotes);
 			blockingScanner = new Scanner(blockingNotes);
 			passingScanner = new Scanner(passingNotes);
 			wheelScanner = new Scanner(wheelNotes);
-			mobilityFormatter = new Formatter(mobilityNotes);
-			shootingFormatter = new Formatter(shootingNotes);
-			blockingFormatter = new Formatter(blockingNotes);
-			passingFormatter = new Formatter(passingNotes);
-			wheelFormatter = new Formatter(wheelNotes);
+			mobilityWriter = new PrintWriter(mobilityNotes);
+			shootingWriter = new PrintWriter(shootingNotes);
+			blockingWriter = new PrintWriter(blockingNotes);
+			passingWriter = new PrintWriter(passingNotes);
+			wheelWriter = new PrintWriter(wheelNotes);
+			mobilityNotes = new FileOutputStream(teamID + "mobility.txt");
 		} catch(Exception e) 
 		{
-			System.out.println("File not found");
+			System.out.println("Don't worry about it!");
 		}
 		teamID = teamNum;
+		mobilityWriter.println("yey it werks");
+	}
+	public Object[] scanMobility() throws IOException
+	{
+		ArrayList<String> output = new ArrayList<String>();
+		
+		String string = mobilityReader.readLine();
+        mobilityReader.close();
+        output.add(string);
+        
+		return output.toArray();
 	}
 	public void generateOverallScore()
 	{
@@ -115,14 +134,6 @@ public class Robot
 	{
 		this.bottomGoalRatio = bottomGoalRatio;
 	}
-	public File getMobilityNotes() 
-	{
-		return mobilityNotes;
-	}
-	public void setMobilityNotes(File mobilityNotes) 
-	{
-		this.mobilityNotes = mobilityNotes;
-	}
 	public File getShootingNotes() 
 	{
 		return shootingNotes;
@@ -155,86 +166,6 @@ public class Robot
 	{
 		this.wheelNotes = wheelNotes;
 	}
-	public Scanner getMobilityScanner()
-	{
-		return mobilityScanner;
-	}
-	public void setMobilityScanner(Scanner mobilityScanner) 
-	{
-		this.mobilityScanner = mobilityScanner;
-	}
-	public Scanner getShootingScanner() 
-	{
-		return shootingScanner;
-	}
-	public void setShootingScanner(Scanner shootingScanner) 
-	{
-		this.shootingScanner = shootingScanner;
-	}
-	public Scanner getBlockingScanner() 
-	{
-		return blockingScanner;
-	}
-	public void setBlockingScanner(Scanner blockingScanner) 
-	{
-		this.blockingScanner = blockingScanner;
-	}
-	public Scanner getPassingScanner() 
-	{
-		return passingScanner;
-	}
-	public void setPassingScanner(Scanner passingScanner) 
-	{
-		this.passingScanner = passingScanner;
-	}
-	public Scanner getWheelScanner() 
-	{
-		return wheelScanner;
-	}
-	public void setWheelScanner(Scanner wheelScanner) 
-	{
-		this.wheelScanner = wheelScanner;
-	}
-	public Formatter getMobilityFormatter() 
-	{
-		return mobilityFormatter;
-	}
-	public void setMobilityFormatter(Formatter mobilityFormatter) 
-	{
-		this.mobilityFormatter = mobilityFormatter;
-	}
-	public Formatter getShootingFormatter() 
-	{
-		return shootingFormatter;
-	}
-	public void setShootingFormatter(Formatter shootingFormatter) 
-	{
-		this.shootingFormatter = shootingFormatter;
-	}
-	public Formatter getBlockingFormatter() 
-	{
-		return blockingFormatter;
-	}
-	public void setBlockingFormatter(Formatter blockingFormatter) 
-	{
-		this.blockingFormatter = blockingFormatter;
-	}
-	public Formatter getPassingFormatter() 
-	{
-		return passingFormatter;
-	}
-	public void setPassingFormatter(Formatter passingFormatter) 
-	{
-		this.passingFormatter = passingFormatter;
-	}
-	public Formatter getWheelFormatter() 
-	{
-		return wheelFormatter;
-	}
-	public void setWheelFormatter(Formatter wheelFormatter) 
-	{
-		this.wheelFormatter = wheelFormatter;
-	}
 	public double getOverallScore() 
 	{
 		return overallScore;
@@ -242,6 +173,46 @@ public class Robot
 	public void setOverallScore(double overallScore) 
 	{
 		this.overallScore = overallScore;
+	}
+	public PrintWriter getMobilityWriter() 
+	{
+		return mobilityWriter;
+	}
+	public void setMobilityWriter(PrintWriter mobilityWriter) 
+	{
+		this.mobilityWriter = mobilityWriter;
+	}
+	public PrintWriter getShootingWriter() 
+	{
+		return shootingWriter;
+	}
+	public void setShootingWriter(PrintWriter shootingWriter) 
+	{
+		this.shootingWriter = shootingWriter;
+	}
+	public PrintWriter getBlockingWriter() 
+	{
+		return blockingWriter;
+	}
+	public void setBlockingWriter(PrintWriter blockingWriter) 
+	{
+		this.blockingWriter = blockingWriter;
+	}
+	public PrintWriter getPassingWriter() 
+	{
+		return passingWriter;
+	}
+	public void setPassingWriter(PrintWriter passingWriter)
+	{
+		this.passingWriter = passingWriter;
+	}
+	public PrintWriter getWheelWriter()
+	{
+		return wheelWriter;
+	}
+	public void setWheelWriter(PrintWriter wheelWriter)
+	{
+		this.wheelWriter = wheelWriter;
 	}
 	
 }
