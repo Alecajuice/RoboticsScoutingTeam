@@ -10,7 +10,9 @@ import java.util.Formatter;
 import java.util.Scanner;
 public class Robot 
 {
-	private ArrayList<Screen> screens = new ArrayList<Screen>();
+	private final int NUM_STATS = 13;
+	private Screen[] screens = new Screen[NUM_STATS + 1];
+	
 	private int teamID;
 	private int assists;
 	private int topGoalAttempts;
