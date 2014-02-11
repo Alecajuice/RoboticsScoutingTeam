@@ -1,7 +1,6 @@
 
 public class Button 
 {
-	
 	private String text;
 	private int x;
 	private int y;
