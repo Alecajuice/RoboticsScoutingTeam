@@ -1,20 +1,19 @@
 
-public class Button 
-{
-	
+public class TextBox {
+
 	private String text;
 	private int x;
 	private int y;
 	private int width;
-	private int height;
+	private int numLines;
 	
-	public Button(String txt, int X, int Y, int wid, int hei) 
+	public TextBox (String txt, int X, int Y, int wid, int numL)
 	{
 		text = txt;
 		x = X;
 		y = Y;
 		width = wid;
-		height = hei;
+		numLines = numL;
 	}
 
 	public String getText() 
@@ -57,13 +56,14 @@ public class Button
 		this.width = width;
 	}
 
-	public int getHeight() 
+	public int getNumLines() 
 	{
-		return height;
+		return numLines;
 	}
 
-	public void setHeight(int height) 
+	public void setNumLines(int numLines) 
 	{
-		this.height = height;
+		this.numLines = numLines;
 	}
+	
 }

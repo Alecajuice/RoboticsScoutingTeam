@@ -14,6 +14,9 @@ public class Main extends JPanel implements KeyListener, MouseListener, MouseMot
 	private static String windowName = "Scouter";
     static int screenWidth = 500;
     static int screenHeight = 500;
+    
+    public static Screen currentScreen;
+    
 	public static void main(String[] args) throws IOException
 	{
         JFrame frame = new JFrame();
