@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -78,6 +79,11 @@ public class Main extends JPanel implements KeyListener, MouseListener, MouseMot
 		
 	}
 	public void keyTyped(KeyEvent arg0) 
+	{
+		
+	}
+	
+	public void paintComponent(Graphics screen)
 	{
 		
 	}

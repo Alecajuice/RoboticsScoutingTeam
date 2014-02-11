@@ -1,7 +1,10 @@
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 
 public class Screen {
+	
+	
 	
 	private ArrayList<Button> buttons = new ArrayList<Button>();
 	private ArrayList<TextBox> textBoxes = new ArrayList<TextBox>();
@@ -22,7 +25,7 @@ public class Screen {
 		Main.currentScreen = this;
 	}
 	
-	public void draw()
+	public void draw(Graphics screen)
 	{
 		
 	}
