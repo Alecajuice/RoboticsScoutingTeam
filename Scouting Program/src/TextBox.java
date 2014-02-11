@@ -1,5 +1,6 @@
 
-public class TextBox {
+public class TextBox 
+{
 
 	private String text;
 	private int x;
